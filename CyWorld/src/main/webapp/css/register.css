@@ -1,0 +1,403 @@
+@charset "UTF-8";
+/* 회원가입 페이지 전용 스타일 */
+body {
+    flex-direction: column;
+    position: relative;
+}
+
+.top-border {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #D8B4F0;
+    z-index: 1000;
+}
+
+.container {
+    margin-top: 3px;
+}
+
+.register-form {
+    margin: 0 auto;
+    width: 500px;
+    border: 2px solid #000;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-sizing: border-box;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 0;
+}
+
+.form-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    min-width: 100px;
+    text-align: left;
+}
+
+.form-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: 'Malgun Gothic', sans-serif;
+    font-weight: 500;
+    box-sizing: border-box;
+}
+
+.input-group {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    min-width: 0;
+}
+
+.input-group .form-input {
+    flex: 1;
+    min-width: 0;
+}
+
+.check-button {
+    padding: 10px 20px;
+    background-color: #CCCCCC;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Malgun Gothic', sans-serif;
+    cursor: pointer;
+    color: #000;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.check-button:hover {
+    background-color: #BBBBBB;
+}
+
+.email-group {
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    min-width: 0;
+}
+
+.email-input {
+    flex: 1;
+    min-width: 0;
+}
+
+.email-separator {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+}
+
+.email-select {
+    flex: 1;
+    padding: 10px 14px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: 'Malgun Gothic', sans-serif;
+    font-weight: 500;
+    background-color: #FFF;
+    cursor: pointer;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.phone-group {
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    min-width: 0;
+}
+
+.phone-select {
+    padding: 10px 14px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: 'Malgun Gothic', sans-serif;
+    font-weight: 500;
+    background-color: #FFF;
+    cursor: pointer;
+    width: 80px;
+    box-sizing: border-box;
+}
+
+.phone-input {
+    flex: 1;
+    min-width: 0;
+}
+
+.form-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23000' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 35px;
+}
+
+.radio-group {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+    cursor: pointer;
+}
+
+.radio-label input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #4A90E2;
+}
+
+.radio-label span {
+    user-select: none;
+}
+
+.button-row {
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.register-button {
+    padding: 12px 50px;
+    background-color: #CCCCCC;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Malgun Gothic', sans-serif;
+    cursor: pointer;
+    color: #000;
+    box-sizing: border-box;
+}
+
+.register-button:hover {
+    background-color: #BBBBBB;
+}
+
+@media (max-width: 600px) {
+    .register-form {
+        width: 100%;
+        max-width: 450px;
+    }
+    
+    .form-label {
+        min-width: 80px;
+        font-size: 14px;
+    }
+    
+    .input-group,
+    .email-group,
+    .phone-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .phone-select {
+        width: 100%;
+    }
+}
+
+/* ===== 아이디 중복확인 모달 스타일 ===== */
+/* ===== 모달 전체 배경 ===== */
+.modal {
+    display: none;            /* 기본은 숨김 */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4); /* 흐린 배경 */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* ===== 모달 박스 ===== */
+.modal-content {
+    width: 350px;
+    background: white;
+    padding: 40px 20px;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+}
+
+/* 닫기 버튼 (X) */
+.modal-content .close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #000;
+    line-height: 1;
+}
+
+.modal-content .close:hover {
+    color: #666;
+}
+
+.modal-content .logo {
+    width: 220px;          /* 크기 조금 키움 */
+    max-width: 90%;        /* 박스보다 커지지 않도록 */
+    height: auto;          /* 비율 유지 */
+    display: block;
+    margin: 0 auto 25px;   /* 중앙 정렬 + 여백 */
+}
+
+.modal-content h2 {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    font-family: 'Malgun Gothic', sans-serif;
+}
+
+.modal-content input {
+    width: 90%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 2px solid #999;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.modal-content .check-btn {
+    width: 50%;
+    padding: 12px;
+    margin-top: 20px;
+    border: 2px solid #666;
+    border-radius: 10px;
+    background: #eee;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Malgun Gothic', sans-serif;
+    font-weight: 500;
+}
+
+.modal-content .check-btn:hover {
+    background: #ddd;
+}
+
+/* ===== 관리자 승인 코드 모달 스타일 ===== */
+/* 모달 배경 */
+.admin-modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* 모달 박스 */
+.admin-modal-content {
+    width: 400px;
+    background: white;
+    padding: 40px 20px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+}
+
+/* 닫기(X) */
+.admin-modal-content .admin-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #000;
+    line-height: 1;
+}
+
+.admin-modal-content .admin-close:hover {
+    color: #666;
+}
+
+/* 로고 */
+.admin-modal-content .admin-logo {
+    width: 220px;
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto 30px;
+}
+
+.admin-modal-content h2 {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    font-family: 'Malgun Gothic', sans-serif;
+}
+
+/* 입력창 */
+.admin-modal-content input {
+    width: 90%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 3px solid #777;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: 'Malgun Gothic', sans-serif;
+}
+
+/* 확인 버튼 */
+.admin-modal-content .admin-check-btn {
+    width: 45%;
+    padding: 12px;
+    margin-top: 25px;
+    border: 3px solid #666;
+    border-radius: 10px;
+    background: #eee;
+    cursor: pointer;
+    font-size: 17px;
+    font-family: 'Malgun Gothic', sans-serif;
+    font-weight: 500;
+}
+
+.admin-modal-content .admin-check-btn:hover {
+    background: #ddd;
+}
+

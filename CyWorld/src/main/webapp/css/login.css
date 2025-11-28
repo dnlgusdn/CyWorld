@@ -1,0 +1,92 @@
+@charset "UTF-8";
+/* 로그인 페이지 전용 스타일 */
+body {
+    flex-direction: column;
+    position: relative;
+}
+
+.top-border {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #D8B4F0;
+    z-index: 1000;
+}
+
+.container {
+    margin-top: 3px;
+}
+
+.login-form {
+    margin: 0 auto 30px;
+    width: 400px;
+    border: 2px solid #000;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-sizing: border-box;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.form-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    min-width: 70px;
+    text-align: left;
+}
+
+.form-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: 'Malgun Gothic', sans-serif;
+    font-weight: 500;
+    box-sizing: border-box;
+}
+
+.button-row {
+    justify-content: flex-end;
+    margin-top: 5px;
+}
+
+.login-button {
+    padding: 10px 35px;
+    background-color: #CCCCCC;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Malgun Gothic', sans-serif;
+    cursor: pointer;
+    color: #000;
+    box-sizing: border-box;
+}
+
+.login-button:hover {
+    background-color: #BBBBBB;
+}
+
+.welcome-message .nav-link {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .login-form {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+

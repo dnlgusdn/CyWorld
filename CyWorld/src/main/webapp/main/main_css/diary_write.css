@@ -1,0 +1,157 @@
+@charset "UTF-8";
+@charset "UTF-8";
+
+/* =========================
+   다이어리 작성 페이지 스타일
+   ========================= */
+
+/* right-panel 내 다이어리 작성 컨테이너 */
+.diary-write-container {
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-family: 'Malgun Gothic', 'Dotum', sans-serif;
+    font-size: 14px;
+    background-color: white;
+}
+
+/* 제목 입력 필드 */
+.diary-title-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    background-color: #f7f7f7;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 텍스트 내용 입력 영역 */
+.diary-content-textarea {
+    flex-grow: 1;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: none;
+    margin-bottom: 15px;
+    font-family: 'Malgun Gothic', 'Dotum', sans-serif;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 설정 및 버튼 그룹 컨테이너 */
+.diary-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px; /* 버튼 그룹 위쪽 여백 증가 */
+    border-top: 1px dotted #ddd;
+}
+
+/* 버튼 그룹 컨테이너 (가로 정렬 및 왼쪽 이동) */
+.button-group {
+    display: flex; /* 버튼을 가로로 나열 */
+    flex-direction: row; 
+    align-items: center;
+    margin-right: 30px; /* 버튼 그룹 전체를 오른쪽에서 30px 왼쪽으로 이동 */
+}
+
+.privacy-setting {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 13px;
+}
+
+.privacy-setting label {
+    font-weight: bold;
+    color: #555;
+}
+
+.privacy-setting select,
+.privacy-setting input[type="file"] {
+    padding: 5px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 13px;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+/* 버튼 스타일 (크기 축소 및 가로 간격) */
+.action-button {
+    padding: 5px 12px; /* 상하좌우 패딩 축소 */
+    background-color: #1c6884;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, box-shadow 0.2s;
+    
+    margin-left: 10px; /* '저장' 버튼과 '취소' 버튼 사이의 간격 */
+    min-width: 70px; /* 최소 너비 지정 */
+    width: auto; 
+    
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:hover {
+    background-color: #144f63;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cancel-button {
+    background-color: #ccc;
+    color: #333;
+}
+
+.cancel-button:hover {
+    background-color: #aaa;
+}
+
+/* === [수정 부분] 날짜 입력 필드 스타일 (캘린더 기능 활성화) === */
+.diary-date-input {
+    /* 기존 스타일 유지 */
+    border: none !important;
+    background: transparent !important;
+    font-family: 'Malgun Gothic', 'Dotum', sans-serif !important;
+    padding: 0 5px !important;
+    
+    /* 캘린더 기능을 활성화하기 위해 appearance 속성 제거 */
+    -webkit-appearance: initial; 
+    -moz-appearance: initial;
+    appearance: initial;
+    
+    /* 캘린더 아이콘이 잘 보이도록 오른쪽 패딩 추가 */
+    padding-right: 15px !important;
+}
+
+/* 캘린더 아이콘 숨기기 관련 스타일 제거 (기능 복구) */
+/* .diary-date-input::-webkit-calendar-picker-indicator { ... 제거됨 ... } */
+
+/* 포커스 시 아웃라인 스타일 유지 */
+.diary-date-input:focus {
+    outline: none;
+    border-bottom: 1px dotted #ccc !important;
+}
+/* ========================================================== */
+
+
+/* 좌측 패널 (DiaryWrite.jsp 전용) */
+.write-left-panel-content .date-header {
+    border-bottom: 2px solid #1c6884;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+.write-left-panel-content label,
+.write-left-panel-content p {
+    color: #333;
+}

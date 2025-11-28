@@ -1,0 +1,262 @@
+@charset "UTF-8";
+
+/* =====================================================
+   1. 전체 레이아웃 (사이즈 & 위치 교정)
+   ===================================================== */
+
+/* 테두리와 패딩 제거, 높이 설정 */
+body.member-page {
+  min-height: 100vh;
+  /* 기존의 두꺼운 border, padding 제거됨 */
+}
+
+/* 핵심: 너비를 admin_bass.css와 동일한 1100px로 강제 고정 */
+body.member-page .dashboard-wrapper {
+  width: 1100px;
+}
+
+/* 내부 레이아웃 (Flexbox 사용) */
+body.member-page .inner-paper {
+  display: flex;
+  gap: 30px; /* 좌우 간격 */
+  min-height: 600px;
+}
+
+/* 왼쪽 프로필 영역 */
+body.member-page .left-box {
+  float: none;
+  width: 230px;
+  flex-shrink: 0;
+}
+
+/* 오른쪽 메인 영역 */
+body.member-page .middle-box {
+  float: none;
+  flex: 1;
+  min-width: 0;
+}
+
+/* =====================================================
+   2. 좌측 사이드바 디자인
+   ===================================================== */
+body.member-page .profile-box {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 18px;
+  background: #f9f9f9;
+  border: 3px solid #bfbfbf;
+}
+
+body.member-page .today-is {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: #4a4a4a;
+}
+
+body.member-page .today-is textarea {
+  resize: none;
+  width: 100%;
+  height: 70px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px;
+  font-size: 12px;
+  background: #fff;
+}
+
+body.member-page .btn-block {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  background: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.12s;
+}
+body.member-page .btn-block:hover {
+  background: #f4f4f4;
+}
+
+/* =====================================================
+   3. 메인 콘텐츠 디자인
+   ===================================================== */
+body.member-page .middle-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+body.member-page .member-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 20px;
+  border: 2px solid #444;
+  border-radius: 16px;
+  background: #fdfdfd;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+body.member-page .member-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* 검색바 */
+body.member-page .search-bar {
+  width: auto;
+  border-radius: 999px;
+  border: 2px solid #444;
+  padding: 4px 12px 4px 18px;
+  gap: 10px;
+  max-width: 320px;
+  background: #fff;
+}
+
+body.member-page .search-btn {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+}
+body.member-page .search-btn::before,
+body.member-page .search-btn::after {
+  content: "";
+  position: absolute;
+  border: 2px solid #444;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  top: 2px;
+  left: 3px;
+}
+body.member-page .search-btn::after {
+  width: 10px;
+  height: 2px;
+  border: 0;
+  background: #444;
+  top: 15px;
+  left: 15px;
+  transform: rotate(45deg);
+  border-radius: 999px;
+}
+
+/* 상태 범례 */
+body.member-page .status-legend {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: #444;
+  margin: 16px 0 8px;
+}
+
+.status-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px; }
+.status-dot.active { background: #1ec845; }
+.status-dot.temp-stop { background: #ffb530; }
+.status-dot.perm-stop { background: #d62828; }
+
+.status-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.status-pill.active { background: rgba(30,200,69,0.14); color: #097c28; }
+.status-pill.temp-stop { background: rgba(255,181,48,0.18); color: #b15c00; }
+.status-pill.perm-stop { background: rgba(214,40,40,0.18); color: #8f1f1f; }
+
+/* =====================================================
+   4. 테이블 스크롤 기능 (여기 수정됨)
+   ===================================================== */
+body.member-page .table-wrapper {
+  margin-top: 4px;
+  border: 2px solid #444;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
+  
+  /* ▼ 스크롤 기능 추가 ▼ */
+  height: 400px;      /* 이 높이를 넘어가면 스크롤 생김 (숫자 조절 가능) */
+  overflow-y: auto;   /* 세로 스크롤 자동 생성 */
+}
+
+/* 스크롤바 디자인 (선택사항 - 예쁘게 보이도록) */
+body.member-page .table-wrapper::-webkit-scrollbar { width: 8px; }
+body.member-page .table-wrapper::-webkit-scrollbar-thumb { background-color: #ccc; border-radius: 4px; }
+body.member-page .table-wrapper::-webkit-scrollbar-track { background-color: #f1f1f1; border-radius: 0 10px 10px 0; }
+
+.member-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+
+/* ▼ 헤더 고정 (스크롤 내려도 제목줄 유지) ▼ */
+.member-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f1f1f1; /* 배경색 필수 (안 그러면 내용이 비침) */
+  border-bottom: 1px solid #dcdcdc; /* 헤더 아래 구분선 */
+  padding: 12px 16px;
+  text-align: left;
+  color: #333;
+}
+
+.member-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ececec;
+}
+
+.member-table th:first-child,
+.member-table td:first-child {
+  text-align: center;
+  width: 50px;
+}
+
+.member-table tbody tr:nth-child(even) { background: #fbfbfb; }
+.member-table tbody tr:hover { background: #f8fcff; }
+.member-table input[type="checkbox"] { width: 16px; height: 16px; }
+
+/* =====================================================
+   5. 하단 액션 버튼
+   ===================================================== */
+body.member-page .action-toolbar {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+body.member-page .action-toolbar button {
+  flex: 1 1 0;
+  min-width: 120px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid #c7c7c7;
+  background: #f1f1f1;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.12s;
+  text-align: center;
+}
+
+body.member-page .action-toolbar button.primary {
+  background: #1ba3bf;
+  color: #fff;
+  border-color: #0f6f83;
+}
+
+body.member-page .action-toolbar button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+}

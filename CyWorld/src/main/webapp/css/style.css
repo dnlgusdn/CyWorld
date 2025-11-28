@@ -1,0 +1,90 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Malgun Gothic';
+    background-color: #F38D11;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-panel {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 60px 40px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    margin-bottom: 40px;
+}
+
+.logo-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    color: #333333;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #F38D11;
+}
+
+.welcome-message {
+    font-size: 20px;
+    color: #333333;
+    font-weight: 400;
+}
+
+@media (max-width: 480px) {
+    .content-panel {
+        padding: 40px 20px;
+    }
+    
+    .navigation {
+        gap: 20px;
+    }
+    
+    .nav-link {
+        font-size: 16px;
+    }
+    
+    .welcome-message {
+        font-size: 18px;
+    }
+}
+

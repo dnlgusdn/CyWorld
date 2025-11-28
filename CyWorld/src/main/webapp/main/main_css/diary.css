@@ -1,0 +1,221 @@
+@charset "UTF-8";
+
+/* =========================
+   다이어리 전용 스타일
+   ========================= */
+
+/* 새로운 페이지 추가 버튼 컨테이너 스타일 (middle-box 안에 위치) */
+.add-buttons-container {
+    margin-top: 15px;
+    margin-bottom: 20px; /* 검색창과 분리 */
+    display: flex;
+    gap: 10px;
+}
+
+.add-buttons-container button {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px;
+}
+
+.add-buttons-container button:hover {
+    background-color: #45a049;
+}
+
+/* 동적으로 추가된 컨텐츠 섹션의 기본 스타일 (페이지 구분을 위해) */
+.dynamic-content-section {
+    padding: 20px;
+    margin-top: 20px;
+    /* 공통 .content-box 내에서 여백을 줌 */
+}
+
+/* -------------------------
+   다이어리 페이지 레이아웃
+   ------------------------- */
+
+/*
+  [핵심 수정 1]
+  Diary.jsp에서 .content-container 안에 right-panel이 있으므로
+  content-container가 높이를 꽉 채우고 flexbox로 자식들을 배치해야 합니다.
+  (이 스타일은 MainProfile.css에 이미 있거나 추가되어야 하지만,
+   다이어리에서 높이 문제를 해결하기 위해 여기에 추가합니다.)
+*/
+.content-container {
+    display: flex;
+    flex: 1; /* 부모가 height: 100%일 경우 남은 공간 차지 */
+    min-height: 0;
+}
+/* right-panel도 flex item으로 설정되어야 합니다. */
+.right-panel {
+    flex: 1; /* 남은 가로 공간을 모두 차지 (기존 MainProfile.css에도 있음) */
+    display: flex;
+    flex-direction: column; /* 내부 요소가 세로로 쌓이도록 설정 */
+    height: 100%; /* 부모의 높이를 상속 */
+}
+
+
+.diary-section {
+    width: 100%;
+    /* height: 100%; 이 요소는 보통 콘텐츠를 담기 때문에 높이를 100%로 설정하지 않음 */
+    box-sizing: border-box;
+}
+
+.diary-layout-container {
+    display: flex;
+    gap: 20px;
+    background-color: white; /* 흰색 배경 */
+    border: 3px solid #1c6884; /* 사이월드 프레임 색상과 유사하게 맞춤 */
+    padding: 15px;
+    border-radius: 10px;
+    /* height: 100%; */ /* .diary-layout-container는 Diary.jsp에 없으므로 무시 */
+}
+
+/* 1. 좌측 패널 스타일 */
+.left-diary-panel {
+    flex-basis: 250px; /* 고정 너비 */
+    padding: 10px;
+    background-color: #f0f0f0; /* 연한 회색 배경 */
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+}
+
+.date-header .month-year {
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 미니 달력 */
+.mini-calendar-box {
+    text-align: center;
+    border: 1px solid #aaa;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #fff;
+}
+
+.month-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #cc0000; /* NOVEMBER 글씨 빨간색 */
+}
+
+.mini-calendar {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8em;
+}
+
+.mini-calendar th, .mini-calendar td {
+    padding: 3px;
+    text-align: center;
+}
+
+.mini-calendar th {
+    color: #333;
+}
+
+.mini-calendar td.inactive {
+    color: #ccc;
+}
+
+/* 폴더 구조 스타일 */
+.folder-structure {
+    margin-bottom: 20px;
+    padding-top: 10px;
+    line-height: 1.5;
+    font-size: 0.9em;
+    border-top: 1px dotted #ccc;
+}
+
+.folder-indent {
+    margin-left: 15px;
+}
+
+.diary-button-group {
+    display: flex;
+    gap: 5px;
+}
+
+.diary-button-group button {
+    padding: 5px 10px;
+    background-color: #ddd;
+    border: 1px solid #bbb;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+/* 2. 중앙 달력 스타일 */
+.main-calendar-view {
+    flex-grow: 1; /* 남은 공간 모두 차지 */
+    /* [핵심 수정 2] 높이를 100%로 설정하여 right-panel 높이에 맞춤 */
+    height: 100%; 
+    padding: 10px; /* main-calendar-view에 패딩 추가 */
+    box-sizing: border-box;
+}
+
+.main-calendar {
+    width: 100%;
+    /* [핵심 수정 3] 달력 테이블이 뷰 영역을 꽉 채우도록 설정 */
+    height: 100%; 
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.main-calendar th, .main-calendar td {
+    border: 1px solid #ccc;
+    padding: 5px;
+    /* height: 100px; 이 값을 제거하여 flexbox가 자동으로 높이를 조절하게 하거나, */
+    /* calc를 사용하여 남은 공간을 균등하게 나누도록 할 수 있습니다. */
+    /* 높이를 %로 설정합니다 (5행이므로 20% - 경계선 제외) */
+    height: 20%; 
+    vertical-align: top;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.main-calendar th {
+    height: auto; /* 헤더는 높이 자동 조절 */
+    background-color: #eee;
+    font-weight: bold;
+}
+
+.main-calendar th.sun { color: red; }
+.main-calendar th.sat { color: blue; }
+
+.day-num {
+    display: block;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: right;
+    margin-bottom: 5px;
+}
+
+.day-num.red {
+    color: red;
+}
+
+/* 아이콘 그룹 스타일 */
+.icon-group {
+    display: flex;
+    flex-direction: column; /* 아이콘을 세로로 정렬 */
+    align-items: flex-end; /* 오른쪽으로 정렬 */
+    gap: 3px;
+    font-size: 1.2em;
+}
+
+.inactive-day {
+    background-color: #f5f5f5; /* 비활성화된 날짜 칸 배경색 */
+}
+
+/* 아이콘 색상 (이모지 대신 실제 아이콘을 사용할 경우를 대비한 클래스명) */
+.icon.locked { color: #888; }
+.icon.music { color: #33a; }
+.icon.diary { color: red; }
