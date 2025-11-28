@@ -184,9 +184,9 @@
                             </tbody>
                         </table>
 
-                        <div class="board-footer">
-                            <button class="write-button">작성</button>
-                        </div>
+						<div class="board-footer">
+    						<button class="write-button" onclick="location.href='BoardWrite.jsp'">작성</button>
+						</div>
 
                     </div>
                 </main>
