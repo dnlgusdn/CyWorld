@@ -1,12 +1,12 @@
 package model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class DiaryDTO {
 	private int diary_id;
 	private String member_no;
 	private String diary_name;
-	private Timestamp create_at;
+	private Timestamp created_at;
 	public int getDiary_id() {
 		return diary_id;
 	}
@@ -25,10 +25,10 @@ public class DiaryDTO {
 	public void setDiary_name(String diary_name) {
 		this.diary_name = diary_name;
 	}
-	public Timestamp getCreate_at() {
-		return create_at;
+	public Timestamp getCreated_at() {
+		return created_at;
 	}
-	public void setCreate_at(Timestamp create_at) {
-		this.create_at = create_at;
+	public void setCreated_at(Timestamp create_at) {
+		this.created_at = create_at;
 	}
 }
