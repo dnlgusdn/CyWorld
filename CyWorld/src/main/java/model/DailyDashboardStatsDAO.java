@@ -159,4 +159,11 @@ public class DailyDashboardStatsDAO {
 
         return result;
     }
+
+    // Get today's stats
+    public DailyDashboardStatsDTO getTodayStats() {
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+        String today = sdf.format(new java.util.Date());
+        return selectOne(today);
+    }
 }

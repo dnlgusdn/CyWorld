@@ -145,4 +145,10 @@ public class AdminCodeDAO {
 
         return result;
     }
+
+    // Validate code
+    public boolean validateCode(String code) {
+        AdminCodeDTO dto = selectByCode(code);
+        return dto != null;
+    }
 }

@@ -122,4 +122,35 @@ public class MemberStatusDAO {
 
         return result;
     }
+
+    // Find by member_no
+    public MemberStatusDTO findByMemberNo(int member_no) {
+        return selectOne(member_no);
+    }
+
+    // Update status
+    public int updateStatus(int member_no, String status) {
+        MemberStatusDTO dto = selectOne(member_no);
+        if (dto == null) {
+            dto = new MemberStatusDTO();
+            dto.member_no = member_no;
+        }
+        
+        if ("active".equals(status)) {
+            dto.is_perm_banned = false;
+            dto.is_temp_banned = false;
+        } else if ("temp_stop".equals(status)) {
+            dto.is_temp_banned = true;
+            dto.is_perm_banned = false;
+        } else if ("perm_stop".equals(status)) {
+            dto.is_perm_banned = true;
+            dto.is_temp_banned = false;
+        }
+        
+        if (dto.member_no > 0) {
+            return update(dto);
+        } else {
+            return insert(dto);
+        }
+    }
 }

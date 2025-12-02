@@ -1,0 +1,97 @@
+/* =========================================
+   [음악 플레이어 디자인 CSS] 
+   JukeboxPlayer.css
+========================================= */
+.music-player-container {
+    width: 300px; 
+    padding: 8px 15px;
+    box-sizing: border-box;
+    background-color: #f0f0f0; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+    /* --- ↓↓↓ 이 부분을 수정합니다 ↓↓↓ --- */
+    position: fixed;
+    top: 50px; /* 헤더 바 아래 위치 (이전과 동일) */
+    right: 180px; /* 친구 목록 패널 (약 350px) + 오른쪽 여백에 맞게 조정 */
+    /* --- ↑↑↑ 이 부분을 수정합니다 ↑↑↑ --- */
+
+    z-index: 1000; 
+}
+/* 진행바 (Range Slider) 커스텀 */
+.progress-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 11px;
+    font-family: 'DungGeunMo', sans-serif;
+    color: #333;
+}
+
+.progress-bar {
+    -webkit-appearance: none;
+    width: 60%; /* 크기 조정 */
+    height: 2px;
+    background: #000;
+    outline: none;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+/* 슬라이더 핸들(동그라미) 디자인 */
+.progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #000;
+    cursor: pointer;
+    margin-top: -5px;
+}
+
+/* 컨트롤 버튼 영역 */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 16px;
+    color: #000;
+}
+
+.btn-control {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #000;
+    padding: 5px;
+}
+
+.btn-control:hover {
+    color: #555;
+}
+
+/* 재생 버튼은 조금 더 크게 */
+.btn-play {
+    font-size: 22px;
+}
+
+/* 셔플/반복 활성화 상태 */
+.active-btn {
+    color: #ff6600; /* 활성화 시 주황색 */
+}
+
+/* 곡 제목 */
+.song-info {
+    text-align: center; 
+    font-size: 12px; 
+    margin-top: 5px; 
+    color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
