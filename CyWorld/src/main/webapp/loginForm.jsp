@@ -14,27 +14,28 @@
     <div class="container">
         <div class="content-panel">
             <div class="logo-container">
-                <a href="./index.html">
+                <a href="./index.jsp">
                     <img src="./img/cyWORLD.png" alt="Cyworld Logo" class="logo-image">
                 </a>
             </div>
             
-            <form class="login-form">
+            <form class="login-form" action="<%= request.getContextPath() %>/login" method="post">
                 <div class="form-row">
                     <label class="form-label">아이디</label>
-                    <input type="text" class="form-input">
+                    <input type="text" class="form-input" name="loginId">
                 </div>
                 <div class="form-row">
                     <label class="form-label">비밀번호</label>
-                    <input type="password" class="form-input">
+                    <input type="password" class="form-input" name="password">
                 </div>
                 <div class="form-row button-row">
                     <button type="submit" class="login-button">로그인</button>
                 </div>
-            </form>
-            
+            </form> 
             <p class="welcome-message">
-                계정이 없으신가요? <a href="./register.html" class="nav-link">회원가입</a>
+                계정이 없으신가요? <a href="./register.jsp" class="nav-link">회원가입</a>
+                
+                
             </p>
         </div>
     </div>

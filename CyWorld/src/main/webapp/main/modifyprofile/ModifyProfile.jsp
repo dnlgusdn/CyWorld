@@ -230,7 +230,7 @@
                                 </div>
 
                                 <div class="action-buttons">
-                                    <button class="btn-cancel">취소</button>
+                                    <button class="btn-cancel"><a href="Profile_setting.jsp">취소</a></button>
                                     <button class="btn-save">수정 완료</button>
                                 </div>
 

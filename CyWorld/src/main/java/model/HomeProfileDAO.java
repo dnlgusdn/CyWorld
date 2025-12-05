@@ -46,7 +46,7 @@ public class HomeProfileDAO extends JDBConnect {
             return null;
         } finally {
             // 리소스 정리 로직 추가 (conn, pstmt, rs.close)
-            close();
+            JDBConnect.close(conn, pstmt, rs);
         }
 
         return dto;

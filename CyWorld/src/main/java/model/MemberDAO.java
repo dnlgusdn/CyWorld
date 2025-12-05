@@ -112,6 +112,11 @@ public class MemberDAO extends JDBConnect {
 
         return dto;
     }
+
+	public boolean isDuplicateId(String userId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
     
     // 기타 DAO 메서드는 생략...
 }

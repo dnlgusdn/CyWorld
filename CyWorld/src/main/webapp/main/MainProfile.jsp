@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -30,7 +32,7 @@
 
                 <div class="header-link">Welcome to my profile!!</div>
             </header>
-
+            
             <div class="music-player-container" id="globalJukeboxPlayer">
                 <div class="progress-area">
                     <span id="currentTime">0:00</span>
@@ -50,6 +52,7 @@
                     <i class="fas fa-music"></i> <span id="songTitle">재생할 곡을 선택해주세요</span>
                 </div>
             </div>
+            
             <div class="content-container">
 
 
@@ -64,14 +67,75 @@
 
                         <div class="userlist-user">
                             <div style="position: relative;">
-                                <img class="user-avatar" src="../img/User profile photo.jpg">
+                                <img class="user-avatar" src="../img/User.jpg">
                                 <span class="user-status-dot status-online"></span>
                             </div>
                             <div class="user-info-block">
                                 <div class="user-name">김진우</div>
                             </div>
                         </div>
+
+                        <div class="userlist-user">
+                            <div style="position: relative;">
+                                <img class="user-avatar" src="../img/User.jpg">
+                                <span class="user-status-dot status-mobile"></span>
+                            </div>
+                            <div class="user-info-block">
+                                <div class="user-name">위현우</div>
+                            </div>
                         </div>
+
+                        <div class="userlist-user">
+                            <div style="position: relative;">
+                                <img class="user-avatar" src="../img/User.jpg">
+                                <span class="user-status-dot status-offline"></span>
+                            </div>
+                            <div class="user-info-block">
+                                <div class="user-name">신동엽</div>
+                            </div>
+                        </div>
+
+                        <div class="userlist-user">
+                            <div style="position: relative;">
+                                <img class="user-avatar" src="../img/User.jpg">
+                                <span class="user-status-dot status-online"></span>
+                            </div>
+                            <div class="user-info-block"><div class="user-name">김민서</div></div>
+                        </div>
+
+                        <div class="userlist-user">
+                            <div style="position: relative;">
+                                <img class="user-avatar" src="../img/User.jpg">
+                                <span class="user-status-dot status-offline"></span>
+                            </div>
+                            <div class="user-info-block"><div class="user-name">나민혁</div></div>
+                        </div>
+
+                        <div class="userlist-user">
+                            <div style="position: relative;">
+                                <img class="user-avatar" src="../img/User.jpg">
+                                <span class="user-status-dot status-online"></span>
+                            </div>
+                            <div class="user-info-block"><div class="user-name">김가은</div></div>
+                        </div>
+
+                        <div class="userlist-user">
+                            <div style="position: relative;">
+                                <img class="user-avatar" src="../img/User.jpg">
+                                <span class="user-status-dot status-online"></span>
+                            </div>
+                            <div class="user-info-block"><div class="user-name">김민성</div></div>
+                        </div>
+
+                        <div class="userlist-user">
+                            <div style="position: relative;">
+                                <img class="user-avatar" src="../img/User.jpg">
+                                <span class="user-status-dot status-mobile"></span>
+                            </div>
+                            <div class="user-info-block"><div class="user-name">홍다은</div></div>
+                        </div>
+
+                    </div>
 
                 </aside>
 
@@ -80,7 +144,7 @@
 <aside class="left-panel">
 
                         <div class="profile-img-box">
-                            <img src="../img/User profile photo.jpg">
+                            <img src="../img/User.jpg">
                         </div>
 
                         <hr class="dashed-line">
@@ -92,22 +156,25 @@
 아 그만살고 싶다~
 아 그만살고 싶다~
 아 그만살고 싶다~
-아 그만살고 싶다~
-
- 
+아 그만살고 싶다~ 
                         </textarea>
+
 
                         <div class="history-section">
                             <div class="history-title">HISTORY</div>
                             <div class="user-info">
-                                김진우 2000.05.01<br>
-                                jin0501833@naver.com
+                                <c:set var="rawDate" value="${sessionScope.member.birth_date}"/>
+                                <c:set var="formattedDate" value="${fn:replace(rawDate, '-', '.')}" />
+                                
+                                <b>${sessionScope.member.nickname}</b><br>
+                                
+                                <b>${formattedDate}</b>
                             </div>
                         </div>
 
                         <div class="left-buttons">
-                            <button class="left-btn">쪽지보내기</button> 
-                            <button class="left-btn">신고하기</button>
+                            <button class="left-btn">쪽지보내기</button>
+                            <button class="left-btn"><a href="declarationPage.jsp">신고하기</a></button>
                         </div>
 
                     </aside>
@@ -160,16 +227,16 @@
 
 <nav class="side-tabs">
                     <a href="MainProfile.jsp" class="tab-item active">홈</a>
-                    <a href="Diary.jsp" class="tab-item">다이어리</a>
                     <a href="Jukebox.jsp" class="tab-item">주크박스</a>
                     <a href="Board.jsp" class="tab-item">게시판</a> 
                 </nav>
 
 
 </div> </div>
+        
     </div>
+    
 </div>
-
 <div id="sendMessageModal" class="modal-overlay">
     <div class="modal-content">
         <div class="modal-header">
@@ -200,6 +267,11 @@
         </div>
     </div>
 </div>
+
+
+
+
+
 <script>
     // 1. 음악 파일 목록 설정
 	const playlist = [
@@ -208,16 +280,18 @@
 	    { title: "김동률 - 다시 사랑한다 말할까", file: "./music/김동률 - 다시 사랑한다 말할까.mp3" },
 	    { title: "나얼 - 귀로(歸路)", file: "./music/나얼 - 귀로(歸路).mp3" },
 	    { title: "넬 - 기억을 걷는 시간", file: "./music/넬 - 기억을 걷는 시간.mp3" },
-	    { title: "리쌍(LeeSSang) - 발레리노(Ballerino) (Feat. ALI)", file: "./music/리쌍(LeeSSang) - 발레리노(Ballerino) (Feat. ALI).mp3" },
-	    { title: "리쌍 - 헤어지지 못하는 여자, 떠나가지 못하는 남자", file: "./music/리쌍 - 헤어지지 못하는 여자, 떠나가지 못하는 남자.mp3" },
-	    { title: "버즈 Buzz - 남자몰래", file: "./music/버즈 Buzz - 남자몰래.mp3" },
-	    { title: "브라운아이즈-벌써일년", file: "./music/브라운아이즈-벌써일년.mp3" },
-	    { title: "수취인불명(Address Unknown) _ 프리스타일 freestyle", file: "./music/수취인불명(Address Unknown) _ 프리스타일 freestyle.mp3" },
-	    { title: "씨야-사랑의 인사", file: "./music/씨야-사랑의 인사.mp3" },
-	    { title: "에픽하이(Epik High) 우산 (Feat. 윤하)", file: "./music/에픽하이(Epik High) 우산 (Feat. 윤하).mp3" },
+	    { title: "리쌍 (leessang) - 리쌍부르스 (feat  정인) [leessang Blues]", file: "./music/리쌍 (leessang) - 리쌍부르스 (feat  정인) [leessang Blues].mp3" },
+	    { title: "리쌍 (leessang) - 발레리노(Ballerino) (Feat. ALI)", file: "./music/리쌍 (leessang) - 발레리노(Ballerino) (Feat. ALI).mp3" },
+	    { title: "리쌍 (leessang) - 헤어지지 못하는 여자, 떠나가지 못하는 남자", file: "./music/리쌍 (leessang) - 헤어지지 못하는 여자, 떠나가지 못하는 남자.mp3" },
+	    { title: "박명호 - 사진 (하늘만 바라봐) (feat. 류주환, Sam Lee)", file: "./music/박명호 - 사진 (하늘만 바라봐) (feat. 류주환, Sam Lee).mp3" },
+	    { title: "버즈 Buzz - 남자를 몰라", file: "./music/버즈 Buzz - 남자를 몰라.mp3" },
+	    { title: "브라운아이즈 - 벌써일년", file: "./music/브라운아이즈 - 벌써일년.mp3" },
+	    { title: "수취인불명 - (Address Unknown)_ 프리스타일 freestyle", file: "./music/수취인불명 - (Address Unknown)_ 프리스타일 freestyle.mp3" },
+	    { title: "씨야 - 사랑의 인사", file: "./music/씨야 - 사랑의 인사.mp3" },
+	    { title: "에픽하이 - (Epik High) 우산 (Feat. 윤하)", file: "./music/에픽하이 - (Epik High) 우산 (Feat. 윤하).mp3" },
 	    { title: "윤미래 - Memories", file: "./music/윤미래 - Memories.mp3" },
 	    { title: "임정희 - 눈물이 안났어", file: "./music/임정희 - 눈물이 안났어.mp3" },
-	    { title: "키네틱플로우 - 몽환의숲(Feat. 이루마)", file: "./music/키네틱플로우 - 몽환의숲(Feat. 이루마).mp3" },
+	    { title: "키네틱플로우 - 몽환의숲(Feat. 이루마)", file: "./music/키네틱플로우 - 몽환의숲(Feat. 이루마)", file: "./music/키네틱플로우 - 몽환의숲(Feat. 이루마).mp3" },
 	    { title: "타우 - 우리들의 행복한 시간", file: "./music/타우 - 우리들의 행복한 시간.mp3" },
 	    { title: "프리스타일 - Y", file: "./music/프리스타일 - Y.mp3" }
 	];
@@ -376,9 +450,6 @@
             return false;
         }
 
-        // *주의*: 실제 서버 전송 시, MessageSendAction.jsp에서 
-        // 입력받은 'receiverNickname'을 사용하여 데이터베이스에서 'receiverNo'를 조회해야 합니다.
-        
         // 서버 전송을 위해 true 반환
         return true; 
     }
@@ -560,6 +631,5 @@
         }
     });
 </script>
-
 </body>
 </html>

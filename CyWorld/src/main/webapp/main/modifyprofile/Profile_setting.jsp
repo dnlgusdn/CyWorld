@@ -190,8 +190,8 @@
     
     <!-- 오늘의 기분 탭 -->
     <div class="mood-tabs">
-        <div class="mood-tab">오늘의 기분</div>
-        <div class="mood-tab active">기분좋음</div>
+        <div class="mood-tab">쪽지보내기</div>
+        <div class="mood-tab active">신고하기</div>
     </div>
     
 </aside>
@@ -243,7 +243,7 @@
         
         <!-- 취소/완료 버튼 -->
         <div class="action-buttons">
-            <button class="cancel-btn">취소</button>
+            <button class="cancel-btn"><a href="../MainProfile.jsp">취소</a></button>
             <button class="complete-btn">완료</button>
         </div>
         
